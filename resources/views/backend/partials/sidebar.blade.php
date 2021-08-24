@@ -35,7 +35,7 @@
           </li>
          
           
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -69,14 +69,26 @@
                 </a>
               </li>
             </ul>
+          </li> --}}
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              
+              <p>
+                Roles & Permissions
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-list"></i>
+                  <p>All Roles</p>
+                </a>
+              </li>
+              
+            </ul>
           </li>
           <li class="nav-item">
-            {{-- <a href="#" class="nav-link">
-                
-              <p>
-                 Logout
-              </p>
-            </a> --}}
             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="fas fa-sign-out-alt"></i>
                 <p>{{ __('Logout') }}</p>
