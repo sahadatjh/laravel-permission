@@ -7,42 +7,44 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Roles List</h3>
-                  <a href="{{ URL::to('admin/roles/create') }}" class="btn btn-success float-right">Create New</a>
+                  <h3 class="card-title">Users List</h3>
+                  <a href="{{ URL::to('admin/users/create') }}" class="btn btn-success float-right">Create New</a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                   @include('backend.partials.messages')
-                  <table id="example1" class="table table-borderd table-striped">
-                        <thead>
-                            <tr class="text-center">
-                              <th>SL</th>
-                              <th>Role</th>
-                              <th>Permissions</th>
-                              <th>Action</th>
-                            </tr>
-                        </thead>
-                    <tbody>
-                        @foreach ($roles as $role)
+                  <table id="dataTable" class="text-center">
+                    <thead class="bg-light text-capitalize">
                         <tr>
-                            <td>{{ $loop->index+1}}</td>
-                            <td>{{ $role->name}}</td>
+                            <th width="5%">Sl</th>
+                            <th width="10%">Name</th>
+                            <th width="10%">Email</th>
+                            <th width="40%">Roles</th>
+                            <th width="15%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       @foreach ($users as $user)
+                       <tr>
+                            <td>{{ $loop->index+1 }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
                             <td>
-                              @foreach ($role->permissions as $perm)
-                                  <span class="badge badge-info mr-1">
-                                      {{ $perm->name }}
-                                  </span>
-                              @endforeach
-                          </td>
-                            <td width="16%">
-                                <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-primary">Edit</a>
-                                <a href="{{ route('roles.delete', $role->id) }}" class="btn btn-danger">Delete</a>
+                                @foreach ($user->roles as $role)
+                                    <span class="badge badge-info mr-1">
+                                        {{ $role->name }}
+                                    </span>
+                                @endforeach
+                            </td>
+                            <td>
+                                <a class="btn btn-success text-white" href="{{ route('users.edit', $user->id) }}">Edit</a>
+
+                                <a class="btn btn-danger text-white" href="{{ route('users.delete', $user->id) }}"> Delete</a>
                             </td>
                         </tr>
-                        @endforeach
-                    
-                    </tfoot>
-                  </table>
+                       @endforeach
+                    </tbody>
+                </table>
                 </div>
                 <!-- /.card-body -->
               </div>
