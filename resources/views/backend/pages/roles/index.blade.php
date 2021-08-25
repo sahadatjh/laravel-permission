@@ -35,8 +35,12 @@
                               @endforeach
                           </td>
                             <td width="16%">
+                              @if (Auth::guard('admin')->user()->can('role.edit'))
                                 <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-primary">Edit</a>
+                              @endif
+                              @if (Auth::guard('admin')->user()->can('role.delete'))
                                 <a href="{{ route('roles.delete', $role->id) }}" class="btn btn-danger">Delete</a>
+                              @endif
                             </td>
                         </tr>
                         @endforeach

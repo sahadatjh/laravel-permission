@@ -19,6 +19,9 @@ class DashboardController extends Controller
     }
     public function dashboard()
     {
+        if (is_null($this->user) || !$this->user->can('dashboard.view')) {
+            abort(403, 'You are Unauthorized !');
+        }
         return view('backend.pages.dashboard');
     }
 }

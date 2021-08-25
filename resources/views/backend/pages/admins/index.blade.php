@@ -8,7 +8,9 @@
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">Admins List</h3>
-                  <a href="{{ URL::to('admin/admins/create') }}" class="btn btn-success float-right">Create New</a>
+                  @if (Auth::guard('admin')->user()->can('admin.create'))
+                    <a href="{{ URL::to('admin/admins/create') }}" class="btn btn-success float-right">Create New</a>
+                  @endif
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -37,9 +39,12 @@
                                 @endforeach
                             </td>
                             <td>
+                              @if (Auth::guard('admin')->user()->can('admin.edit'))
                                 <a class="btn btn-success text-white" href="{{ route('admins.edit', $admin->id) }}">Edit</a>
-
+                              @endif
+                              @if (Auth::guard('admin')->user()->can('admin.delete'))
                                 <a class="btn btn-danger text-white" href="{{ route('admins.delete', $admin->id) }}"> Delete</a>
+                              @endif
                             </td>
                         </tr>
                        @endforeach
