@@ -14,7 +14,7 @@
           <img src="{{ asset('assets') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="#" class="d-block">{{ Auth::guard('admin')->user()->name ?? 'dashboard' }}</a>
         </div>
       </div>
 
@@ -26,7 +26,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="{{route('dashboard.view')}}" class="nav-link active">
+            <a href="{{route('admin.dashboard')}}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -88,28 +88,23 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <p>
-                Manage Users
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('users.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
-                  <p>All Users</p>
-                </a>
-              </li>
-              
-            </ul>
+              <a href="{{route('admins.index')}}" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                <p>All Admins</p>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a href="{{route('users.index')}}" class="nav-link">
+                  <i class="nav-icon fas fa-users"></i>
+                <p>All Users</p>
+              </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="fas fa-sign-out-alt"></i>
                 <p>{{ __('Logout') }}</p>
             </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            <form id="logout-form" action="{{ route('admin.logout.submit') }}" method="POST" class="d-none">
                 @csrf
             </form>
           </li>
