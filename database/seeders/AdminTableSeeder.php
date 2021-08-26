@@ -15,14 +15,16 @@ class AdminTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = Admin::where('email', 'sahadat@gmail.com')->first();
-        if (is_null($user)) {
-            $user = new Admin();
-            $user->name = "Sahadat Hossain";
-            $user->username = "sahadat";
-            $user->email = "sahadat@gmail.com";
-            $user->password = Hash::make('11223344');
-            $user->save();
+        $admin = Admin::where('email', 'sahadat@gmail.com')->first();
+        if (is_null($admin)) {
+            $admin = new Admin();
+            $admin->name = "Sahadat Hossain";
+            $admin->username = "sahadat";
+            $admin->email = "sahadat@gmail.com";
+            $admin->password = Hash::make('11223344');
+            $admin->save();
+
+            // $admin->assignRole(1);
         }
     }
 }
