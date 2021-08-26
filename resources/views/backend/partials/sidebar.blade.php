@@ -94,6 +94,12 @@
               </a>
           </li>
           <li class="nav-item">
+              <a href="{{route('category.index')}}" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                <p>All Categories</p>
+              </a>
+          </li>
+          <li class="nav-item">
               <a href="{{route('users.index')}}" class="nav-link">
                   <i class="nav-icon fas fa-users"></i>
                 <p>All Users</p>

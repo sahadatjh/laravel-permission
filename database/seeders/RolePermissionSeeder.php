@@ -33,14 +33,14 @@ class RolePermissionSeeder extends Seeder
                 ]
             ],
             [
-                'group_name' => 'blog',
+                'group_name' => 'Category',
                 'permissions' => [
                     // Blog Permissions
-                    'blog.create',
-                    'blog.view',
-                    'blog.edit',
-                    'blog.delete',
-                    'blog.approve',
+                    'category.create',
+                    'category.view',
+                    'category.edit',
+                    'category.delete',
+                    'category.approve',
                 ]
             ],
             [

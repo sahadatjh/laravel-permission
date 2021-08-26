@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AdminsController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Backend\Auth\LoginController;
 
@@ -62,4 +63,13 @@ Route::prefix('admin')->group(function () {
     //Forget Route
     Route::get('/password/reset', [LoginController::class, 'showLinkRequestForm'])->name('admin.password.request');
     Route::post('/password/reset/submit', [LoginController::class, 'reset'])->name('admin.password.update');
+
+
+    //category route
+    Route::get('categorys', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('category', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::post('category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::get('category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
 });
